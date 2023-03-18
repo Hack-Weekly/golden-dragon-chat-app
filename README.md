@@ -36,3 +36,8 @@ To start the backend server for development run the following commands:
 
 	cd server
 	npm run dev
+
+**To access the frontend server from another device on your network (phone, tablet, etc.) run the following commands to start the frontend:**
+
+	cd golden-dragon-chat-app
+	npm run dev -- --host
