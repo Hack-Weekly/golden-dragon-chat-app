@@ -22,14 +22,14 @@ const ChatBox = () => {
       limit(50)
     );
 
-    const parse = onSnapshot(q, (QuerySnapshot) => {
+    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
     });
-    return () => parse;
+    return () => unsubscribe;
   }, []);
 
   return (
