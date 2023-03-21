@@ -1,3 +1,4 @@
+// The welcome screen shown upon login. Maybe show number of chats since last login or something
 import Sammy from "../img/sammy.jpeg"
 import "../css/main.css"
 

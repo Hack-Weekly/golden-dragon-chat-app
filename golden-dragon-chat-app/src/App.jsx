@@ -1,10 +1,15 @@
-import SampleComponent from "./components/Sample_Component";
+import NavBar from "./components/NavBar";
+import { auth } from "./firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Welcome from "./components/Welcome"
+import ChatBox from "./components/ChatBox"
 
 export default function App() {
+  const [user] = useAuthState(auth);
   return (
   <>
-  <h1 className="text-center">Hello Golden Dragon Chat App</h1>
-  <SampleComponent />
+    <NavBar />
+    {!user ? <Welcome /> : <ChatBox />}
   </>
   );
   }
