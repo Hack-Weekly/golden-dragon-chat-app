@@ -84,7 +84,6 @@ h1 {
 .chat-bubble__right {
   position: relative;
   margin-left: auto;
-  color: #202020;
 }
 .chat-bubble__left {
   width: 40px;
@@ -106,9 +105,28 @@ h1 {
 }
 .user-message {
   word-break: break-all;
-  background-color: #EFEFEF;
   border-radius: 15px;
   padding: 10px 16px;
+  background-color: #bb9d73;
+  color: white;
+}
+.own-chat-bubble {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+.own-chat-bubble__left {
+  margin-left: 10px;
+}
+.own-user-name {
+  right: 0;
+}
+.own-message-timestamp {
+  right: 0;
+}
+.own-message {
+  background-color: #EFEFEF;
+  color: #202020;
 }
 
 /* send message */

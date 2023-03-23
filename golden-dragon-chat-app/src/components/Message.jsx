@@ -30,19 +30,41 @@ const Message = ({ message }) => {
 	return (
 		<div
 			id={message.id}
-			className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}
+			className={`chat-bubble ${
+				message.uid === user.uid ? "own-chat-bubble" : ""
+			}`}
 		>
 			<img
-				className="chat-bubble__left"
+				className={`chat-bubble__left ${
+					message.uid === user.uid ? "own-chat-bubble__left" : ""
+				}`}
 				src={message.avatar}
 				alt="user avatar"
 			/>
 			<div className="chat-bubble__right">
 				<div className="d-flex">
-					<p className="user-name pr-1">{message.name}</p>
-					<p className="message-timestamp">{formattedTimestamp}</p>
+					<p
+						className={`user-name pr-1  ${
+							message.uid === user.uid ? "own-user-name" : ""
+						}`}
+					>
+						{message.name}
+					</p>
+					<p
+						className={`message-timestamp ${
+							message.uid === user.uid ? "own-message-timestamp" : ""
+						}`}
+					>
+						{formattedTimestamp}
+					</p>
 				</div>
-				<p className="user-message">{message.text}</p>
+				<p
+					className={`user-message ${
+						message.uid == user.uid ? "own-message" : ""
+					}`}
+				>
+					{message.text}
+				</p>
 			</div>
 		</div>
 	);
