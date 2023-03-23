@@ -1,12 +1,10 @@
 body {
-  display: grid;
-  place-items: center;
   background-color: #b4a7d6;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-#root {
-  max-width: 95vw;
+  margin: 0px;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .wrapper {
@@ -60,9 +58,21 @@ h1 {
 }
 
 /* chat component */
+.main-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+.chat-box {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
 .messages-wrapper {
   padding: 30px;
   margin-bottom: 60px;
+  overflow-y: auto;
 }
 .chat-bubble {
   border-radius: 20px 20px 20px 20px;
@@ -110,7 +120,6 @@ h1 {
 /* send message */
 .send-message {
   box-sizing: border-box;
-  position: fixed;
   left: 0px;
   bottom: 0px;
   width: 100%;
@@ -138,8 +147,8 @@ h1 {
   min-height: 1.25rem;
   resize: none;
 }
-.send-message > div > textarea:placeholder {
-  color: #ddd;
+.send-message > div > textarea.error::placeholder {
+  color: rgb(139, 45, 45) !important;
 }
 .send-message > div > button {
   box-sizing: border-box;
@@ -165,4 +174,26 @@ h1 {
 
 .pr-1 {
   padding-right: 1rem;
+}
+
+/* Custom scrollbar */
+/* width */
+.custom-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #bb9d73;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #867f74;
 }
