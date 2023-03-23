@@ -5,6 +5,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#root {
+  max-width: 95vw;
+}
+
 .wrapper {
   background-color: #fff9e6;
   padding: 20px;
@@ -105,42 +109,55 @@ h1 {
 
 /* send message */
 .send-message {
+  box-sizing: border-box;
   position: fixed;
   left: 0px;
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
-  background-color: #b4a7d6;
+  background-color: white;
   display: flex;
 }
-.send-message > input {
-  height: 40px;
-  padding: 10px 10px;
-  border-radius: 5px 0 0 5px;
+.send-message > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.send-message > div > textarea {
+  overflow: hidden !important;
+  height: 20px;
+  padding: 10px 16px;
+  margin-right: 10px;
+  border-radius: 10px;
   border: none;
   flex-grow: 1;
-  background-color: white;
+  background-color: #ececec;
   color: #1c2c4c;
   font-size: 1rem;
+  max-height: 5rem;
+  min-height: 1.25rem;
+  resize: none;
 }
-.send-message > input:placeholder {
+.send-message > div > textarea:placeholder {
   color: #ddd;
 }
-.send-message > :is(input, button):focus {
-  outline: none;
-  border-bottom: 1px solid #7cc5d9;
-}
-.send-message > button {
+.send-message > div > button {
+  box-sizing: border-box;
   width: 70px;
-  height: 60px;
+  height: 100%;
   padding: 5px 10px;
-  border-radius: 0 5px 5px 0;
-  color: #242443;
-  border: 1px solid #7cc5d9;
-  background-color: #7cc5d9;
+  border: none;
+  background-color: transparent;
   font-weight: 600;
+  cursor: pointer;
 }
-
+.send-message > div > button > svg > .send-message-icon {
+  fill: #bb9d73;
+  transition: 0.3s ease;
+}
+.send-message > div > button:hover > svg > .send-message-icon {
+  fill: #867f74;
+}
 
 .d-flex {
   display: flex;
