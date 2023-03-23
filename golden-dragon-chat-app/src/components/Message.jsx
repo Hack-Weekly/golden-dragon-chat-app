@@ -14,6 +14,7 @@ const Message = ({ message }) => {
   const [user] = useAuthState(auth);
   return (
     <div
+      id={message.id}
       className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
       <img
         className="chat-bubble__left"

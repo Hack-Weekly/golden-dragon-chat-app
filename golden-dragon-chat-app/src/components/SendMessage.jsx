@@ -1,25 +1,49 @@
 // The input component to send a message
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import autosize from 'autosize';
 
-const SendMessage = ({ scroll }) => {
+const SendMessage = () => {
   const [message, setMessage] = useState("");
+  const [placeHolder, _setPlaceHolder] = useState("your message here...");
+  const messageInputRef = useRef();
+
+  function placeHolderTimeout(val, timeout) {
+    setTimeout(() => {
+      _setPlaceHolder(val);
+      messageInputRef.current.classList.remove('error');
+    }, timeout);
+  };
+
+  const setPlaceHolder = (placeHolder_val, timeout=0, default_val="your message here...") => {
+    // Some side-effect here ...
+    console.log(placeHolder_val, timeout, default_val);
+    if (timeout) {
+      placeHolderTimeout(default_val, timeout);
+    }
+    _setPlaceHolder(placeHolder_val);
+    // ... or there
+};
+
   useEffect(() => {
-    let el = document.getElementById("messageInput");
-    autosize(el);
-  })
+    autosize(messageInputRef.current);
+  }, [])
+
+  useEffect(() => {
+    _setPlaceHolder("your message here...");
+    messageInputRef.current.classList.remove('error');
+  }, [message])
 
   function setHeight() {
-    let el = document.getElementById("messageInput");
-    el.style.height = "20px";
+    messageInputRef.current.style.height = "20px";
   };
 
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() === "") {
-      alert("Enter valid message");
+      setPlaceHolder('Invalid Message! Try typing something here...', 3000);
+      messageInputRef.current.classList.add('error');
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
@@ -31,18 +55,18 @@ const SendMessage = ({ scroll }) => {
       uid,
     });
     setMessage("");
-    scroll.current.scrollIntoView({ behavior: "smooth" });
+    setPlaceHolder('your message here...')
     setHeight();
   };
   return (
     <form onSubmit={(event) => sendMessage(event)} className="send-message">
       <div>
         <textarea
-          id="messageInput"
+          ref={messageInputRef}
           name="messageInput"
           className="form-input__input"
           rows="2"
-          placeholder="your message here..."
+          placeholder={placeHolder}
           value={message}
           maxLength="300"
           onChange={(e) => setMessage(e.target.value)}
