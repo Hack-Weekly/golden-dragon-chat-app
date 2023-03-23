@@ -76,7 +76,7 @@ h1 {
 }
 .chat-bubble {
   width: max-content;
-  max-width: calc(100% - 50px);
+  max-width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -84,9 +84,11 @@ h1 {
 .chat-bubble__right {
   position: relative;
   margin-left: auto;
+  min-width: 40px;
 }
 .chat-bubble__left {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   margin-right: 10px;
 }
@@ -127,6 +129,7 @@ h1 {
 .own-message {
   background-color: #EFEFEF;
   color: #202020;
+  text-align: right;
 }
 
 /* send message */
