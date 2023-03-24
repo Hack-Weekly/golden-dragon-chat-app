@@ -1,5 +1,5 @@
 body {
-  background-color: #b4a7d6;
+  background: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
   height: 100%;
@@ -130,6 +130,19 @@ h1 {
   background-color: #EFEFEF;
   color: #202020;
   text-align: right;
+}
+.delete-message-btn {
+  cursor: pointer;
+  position: absolute;
+  top: -16px;
+  border: none;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 5px;
+}
+.delete-svg path {
+  fill: #bb9d73;
 }
 
 /* send message */
