@@ -13,7 +13,7 @@ import Message from "./Message";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState();
-  const [messageLimit, setMessageLimit] = useState(50);
+  const [messageLimit, setMessageLimit] = useState(15);
   const messagesCount = useRef(messages);
   const chatBoxElement = useRef();
   const firstMessage = useRef(messages);
@@ -32,9 +32,9 @@ const ChatBox = () => {
   function increaseLimit() {
     if (messageLimit >= maxMessageLimit || messageLimit >= totalMessageCount.current) return;
     dataFetched.current = false;
-    const newLimit = messageLimit + 50;
+    const newLimit = messageLimit + 15;
     setMessageLimit(newLimit);
-    setTimeout(() => isThrottled.current = false, 3000);
+    setTimeout(() => isThrottled.current = false, 750);
   };
 
   async function getTotalMessageCount() {
@@ -66,9 +66,6 @@ const ChatBox = () => {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages.reverse());
-      if (firstMessage.current?.id !== messages?.[0]?.id && firstMessage.current && messages?.[0] && messageLimit !== messages?.length) {
-        firstMessage.current.scrollIntoView();
-      }
       messagesCount.current = messages.length;
     });
     return () => unsubscribe;
@@ -77,7 +74,14 @@ const ChatBox = () => {
   useEffect(() => {
     // Scroll to bottom the first time messages loads
     if (messagesCount.current) {
-      if (firstMessage.current) observer.unobserve(firstMessage.current);
+      if (firstMessage.current) {
+        observer.unobserve(firstMessage.current);
+        try {
+          if (firstMessage.current.id !== messages[0].id) {
+            firstMessage.current.scrollIntoView();
+          }
+        } catch {}
+      }
       firstMessage.current = document.getElementById(messages[0].id);
       observer.observe(firstMessage.current);
     }

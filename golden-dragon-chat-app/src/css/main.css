@@ -1,10 +1,15 @@
 body {
   background: #FFFFFF;
+  /* background-color: #ffffff;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuX04wQzBYIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iMTIuNSIgaGVpZ2h0PSIxMi41IiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIj48bGluZSB4MT0iMCIgeT0iMCIgeDI9IjAiIHkyPSIxMi41IiBzdHJva2U9IiNCQjlFNzQiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+IDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybl9OMEMwWCkiIG9wYWNpdHk9IjAuNDkiLz48L3N2Zz4='); */
+  /* background-image: url(/src/img/sssquiggly.svg); */
+  /* background-image: url(/src/img/rrrainbow.svg); */
+  /* background-image: url(/src/img/bbblurry.svg); */
+  /* background-attachment: fixed; */
+  background-image: url(/src/img/uuundulate.svg);
+  background-size:cover;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
-  height: 100%;
-  min-height: 100%;
-  max-height: 100%;
 }
 
 .wrapper {
@@ -27,8 +32,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #242443;
   height: 60px;
+  background-color: rgba(149, 157, 165, 0.05);
+  box-shadow: 0px 5px 10px rgba(149, 157, 165, 0.25);
 }
 .nav-bar > button:hover {
   cursor: pointer;
@@ -44,9 +50,9 @@ h1 {
 .sign-out {
   padding: 5px 10px;
   border-radius: 5px;
-  color: #FFFFFF;
+  color: rgba(42, 42, 42, 0.85);
   border: None;
-  background-color: #8873be;
+  background-color: rgba(255, 255, 255, 0.25);
   font-weight: 600;
   transition: 0.3s ease;
 }
@@ -152,7 +158,8 @@ h1 {
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
-  background-color: white;
+  background-color: rgba(149, 157, 165, 0.05);
+  box-shadow: 0px -5px 10px rgba(149, 157, 165, 0.25);
   display: flex;
 }
 .send-message > div {
@@ -174,19 +181,24 @@ h1 {
   max-height: 5rem;
   min-height: 1.25rem;
   resize: none;
+  border: 1px solid rgba(149, 157, 165, 0.75);
 }
 .send-message > div > textarea.error::placeholder {
   color: rgb(139, 45, 45) !important;
 }
 .send-message > div > button {
   box-sizing: border-box;
+  border-radius: 10px;
   width: 70px;
   height: 100%;
   padding: 5px 10px;
   border: none;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   font-weight: 600;
   cursor: pointer;
+}
+.send-message > div > button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .send-message > div > button > svg > .send-message-icon {
   fill: #bb9d73;
@@ -213,6 +225,8 @@ h1 {
 /* Track */
 .custom-scroll::-webkit-scrollbar-track {
   background: transparent;
+  background-color: rgba(255, 255, 255, 0.25);
+  /* box-shadow: 0px -5px 10px rgba(149, 157, 165, 0.25); */
 }
 
 /* Handle */
