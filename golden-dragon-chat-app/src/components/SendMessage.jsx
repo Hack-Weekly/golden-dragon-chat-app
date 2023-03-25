@@ -18,7 +18,6 @@ const SendMessage = () => {
 
   const setPlaceHolder = (placeHolder_val, timeout=0, default_val="your message here...") => {
     // Some side-effect here ...
-    console.log(placeHolder_val, timeout, default_val);
     if (timeout) {
       placeHolderTimeout(default_val, timeout);
     }
