@@ -70,6 +70,44 @@ h1 {
   font-weight: 600;
 }
 
+/* welcome component */
+.welcome-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome__left {
+  width: 325px;
+  margin-right: 5rem;
+}
+
+.welcome__left button {
+  cursor: pointer;
+}
+
+.welcome__left h1 {
+  font-size: 2.5rem;
+}
+
+.welcome__right {
+  width: 325px;
+}
+
+@media (max-width: 760px) {
+  .welcome-container {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .welcome__left {
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+}
+
 /* chat component */
 .main-wrapper {
   width: 100%;
