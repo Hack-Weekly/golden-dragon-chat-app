@@ -11,7 +11,7 @@ export default function App() {
   <div className="main-wrapper">
     <NavBar />
     {!user ? <Welcome /> : <ChatBox />}
-    {!user ? <Welcome /> : <SendMessage />}
+    {!user ? null : <SendMessage />}
   </div>
   );
   }

@@ -40,6 +40,7 @@ h1 {
   cursor: pointer;
 }
 .sign-in {
+  cursor: pointer;
   border: none;
   background-color: transparent;
 }
@@ -47,7 +48,13 @@ h1 {
   height: 30px;
   width: auto;
 }
+.sign-in:hover > img {
+  height: 30px;
+  width: auto;
+  filter: brightness(0.9);
+}
 .sign-out {
+  cursor: pointer;
   padding: 5px 10px;
   border-radius: 5px;
   color: rgba(42, 42, 42, 0.85);
@@ -59,7 +66,7 @@ h1 {
 .sign-out:hover {
   color: #FFFFFF;
   border: None;
-  background-color: #5a30c4;
+  background-color: rgba(90, 78, 196, 0.8);
   font-weight: 600;
 }
 
@@ -70,6 +77,15 @@ h1 {
   flex-direction: column;
   min-height: 100vh;
   max-height: 100vh;
+}
+.no-more-messages {
+  text-align: center;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  font-size: large;
+  color: white;
+  background-color: rgba(90, 78, 196, 0.625);
 }
 .chat-box {
   flex-grow: 1;
@@ -158,6 +174,7 @@ h1 {
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
+  padding-right: 20px;
   background-color: rgba(149, 157, 165, 0.05);
   box-shadow: 0px -5px 10px rgba(149, 157, 165, 0.25);
   display: flex;
@@ -205,7 +222,7 @@ h1 {
   transition: 0.3s ease;
 }
 .send-message > div > button:hover > svg > .send-message-icon {
-  fill: #867f74;
+  fill: rgba(90, 78, 196, 0.8);
 }
 
 .d-flex {
@@ -231,11 +248,11 @@ h1 {
 
 /* Handle */
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: #bb9d73;
+  background: rgba(187, 157, 115, 0.8);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: #867f74;
+  background: rgba(90, 78, 196, 0.5);
 }

@@ -13,6 +13,7 @@ import Message from "./Message";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState();
+  const [showNoMoreMessages, setshowNoMoreMessages] = useState(false);
   const [messageLimit, setMessageLimit] = useState(15);
   const messagesCount = useRef(messages);
   const chatBoxElement = useRef();
@@ -30,7 +31,10 @@ const ChatBox = () => {
 
   // Throttles the increase of the message limit by 3 seconds to avoid spamming this method.
   function increaseLimit() {
-    if (messageLimit >= maxMessageLimit || messageLimit >= totalMessageCount.current) return;
+    if (messageLimit >= maxMessageLimit || messageLimit >= totalMessageCount.current) {
+      setshowNoMoreMessages(true);
+      return;
+    };
     dataFetched.current = false;
     const newLimit = messageLimit + 15;
     setMessageLimit(newLimit);
@@ -93,6 +97,8 @@ const ChatBox = () => {
   return (
     <main ref={chatBoxElement} className="chat-box custom-scroll">
       <div className="messages-wrapper">
+        {showNoMoreMessages ? <div className="no-more-messages">
+          You've reached the end of the messages, go send some more!</div> : null}
         {messages?.map((message) => (
           <Message key={message.id} message={message} />
         ))}
