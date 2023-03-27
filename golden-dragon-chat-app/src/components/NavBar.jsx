@@ -1,16 +1,23 @@
 // Sign in / out button on a nav bar, maybe abutton to show the SendMessage component as well
-import React, { useState } from "react";
+import React from "react";
 import GoogleSignin from "../img/btn_google_signin_dark_normal_web.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect, signInWithPopup } from "firebase/auth";
 
 const NavBar = () => {
 
   const [user] = useAuthState(auth);
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+  const googleSignIn = async () => {
+    try {
+      const res = await signInWithPopup(auth, new GoogleAuthProvider());
+    } catch (err) {
+      // If popup fails, try redirect
+      signInWithRedirect(auth, new GoogleAuthProvider());
+      // After the page redirects back
+      const userCred = await getRedirectResult(auth);
+      console.error(err);
+    }
   };
   const signOut = () => {
     auth.signOut();
@@ -23,9 +30,10 @@ const NavBar = () => {
           Sign Out
         </button>
       ) : (
-        <button className="sign-in">
+        <button className="sign-in"
+          onClick={googleSignIn}
+        >
           <img
-            onClick={googleSignIn}
             src={GoogleSignin}
             alt="sign in with google"
             type="button"

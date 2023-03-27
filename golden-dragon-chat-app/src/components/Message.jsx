@@ -60,7 +60,15 @@ const Message = ({ message }) => {
         src={message.avatar}
         alt="user avatar"
       />
-      <div className="chat-bubble__right">
+      <div className="chat-bubble__right"
+        onContextMenu={(e) => {
+          if (message.uid === user.uid) {
+            setShowMenu(true);
+          }
+
+          e.preventDefault();
+        }}
+      >
         <div className="d-flex">
           <p
             className={`user-name pr-1  ${
@@ -81,13 +89,6 @@ const Message = ({ message }) => {
           className={`user-message ${
             message.uid == user.uid ? "own-message" : ""
           }`}
-          onContextMenu={(e) => {
-            if (message.uid === user.uid) {
-              setShowMenu(true);
-            }
-
-            e.preventDefault();
-          }}
         >
           {message.text}
         </p>
