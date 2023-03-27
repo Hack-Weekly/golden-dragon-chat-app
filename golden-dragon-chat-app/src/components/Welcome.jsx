@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import GoogleSignin from "../img/btn_google_signin_dark_normal_web.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect, signInWithPopup, getRedirectResult } from "firebase/auth";
 import FakeMessage from "./FakeMessage";
 import Cat from "../img/cat.jpg";
 import Dog from "../img/dog.png";
@@ -12,9 +12,16 @@ import Capybara from "../img/capybara.png";
 
 export default function Welcome() {
   const [user] = useAuthState(auth);
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+  const googleSignIn = async () => {
+    try {
+      const res = await signInWithPopup(auth, new GoogleAuthProvider());
+    } catch (err) {
+      // If popup fails, try redirect
+      signInWithRedirect(auth, new GoogleAuthProvider());
+      // After the page redirects back
+      const userCred = await getRedirectResult(auth);
+      console.error(err);
+    }
   };
 
   return (

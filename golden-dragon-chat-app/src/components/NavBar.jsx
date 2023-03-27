@@ -3,7 +3,7 @@ import React from "react";
 import GoogleSignin from "../img/btn_google_signin_dark_normal_web.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect, signInWithPopup, getRedirectResult } from "firebase/auth";
 
 const NavBar = () => {
 
